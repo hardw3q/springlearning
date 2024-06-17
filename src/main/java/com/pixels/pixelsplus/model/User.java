@@ -1,13 +1,10 @@
 package com.pixels.pixelsplus.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name = "users")
 public class User {
     @Id
     @GeneratedValue
@@ -27,4 +24,7 @@ public class User {
     @Column
     private String telegramID;
 
+    @ManyToOne
+    @JoinColumn(name = "subscription_id")
+    private Subscription subscription;
 }
